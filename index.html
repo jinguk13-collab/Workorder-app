@@ -10,21 +10,26 @@
     <h2>Login</h2>
     <input type="text" id="username" placeholder="Username">
     <input type="password" id="password" placeholder="Password">
-    <button onclick="login()">Login</button>
+    <!-- type="button" biar gak reload -->
+    <button type="button" onclick="login()">Login</button>
   </div>
 
   <!-- FORM -->
   <div id="formPage" style="display:none;">
     <h2>Work Order Form</h2>
     <form id="woForm">
-      <input type="text" id="wo_number" placeholder="WO Number" required><br>
-      <input type="text" id="customer_name" placeholder="Customer Name" required><br>
+      <label>WO Number</label><br>
+      <input type="text" id="wo_number" required><br><br>
+
+      <label>Customer Name</label><br>
+      <input type="text" id="customer_name" required><br><br>
+
       <button type="submit">Kirim</button>
     </form>
   </div>
 
-  <!-- Script login langsung di sini -->
   <script>
+    // Fungsi login
     function login() {
       const user = document.getElementById("username").value;
       const pass = document.getElementById("password").value;
@@ -36,6 +41,13 @@
         alert("Username / Password salah!");
       }
     }
+
+    // Fungsi submit form
+    document.getElementById("woForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      alert("Form berhasil dikirim! (dummy)");
+      this.reset();
+    });
   </script>
 </body>
 </html>
