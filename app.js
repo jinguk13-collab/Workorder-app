@@ -29,32 +29,37 @@ async function uploadFile(file, path) {
   return await getDownloadURL(storageRef);
 }
 
+// Submit Form
 document.getElementById("woForm").addEventListener("submit", async (e) => {
   e.preventDefault();
-  const form = e.target;
 
   try {
+    const wo_number = document.getElementById("wo_number").value;
+    const customer_name = document.getElementById("customer_name").value;
+    const address = document.getElementById("address").value;
+    const photo_house = document.getElementById("photo_house").files[0];
+
     const data = {
-      wo_number: form.wo_number.value,
-      customer_name: form.customer_name.value,
-      address: form.address.value,
+      wo_number,
+      customer_name,
+      address,
       created_at: new Date(),
       photos: {}
     };
 
     // Upload Foto Rumah
-    if (form.photo_house.files[0]) {
-      data.photos.house = await uploadFile(form.photo_house.files[0], `wo/${data.wo_number}/house`);
+    if (photo_house) {
+      data.photos.house = await uploadFile(photo_house, `wo/${wo_number}/house`);
     }
 
     // Simpan ke Firestore
     await addDoc(collection(db, "workorders"), data);
 
     alert("✅ Data berhasil dikirim ke Firebase!");
-    form.reset();
+    document.getElementById("woForm").reset();
 
   } catch (error) {
     console.error("❌ Error saat submit:", error);
-    alert("Terjadi error, cek Console untuk detail.");
+    alert("❌ Terjadi error, cek Console untuk detail.");
   }
 });
