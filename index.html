@@ -16,7 +16,19 @@
     <input type="password" id="password" placeholder="Password">
     <button onclick="login()">Login</button>
   </div>
+<script>
+  function login() {
+    const user = document.getElementById("username").value;
+    const pass = document.getElementById("password").value;
 
+    if (user === "admin" && pass === "admin") {
+      document.getElementById("loginPage").style.display = "none";
+      document.getElementById("formPage").style.display = "block";
+    } else {
+      alert("Username atau Password salah!");
+    }
+  }
+</script>
   <!-- FORM -->
   <div id="formPage" style="display:none;">
     <h2>Work Order Form</h2>
