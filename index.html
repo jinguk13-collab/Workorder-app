@@ -3,10 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <title>Work Order App</title>
-  <link rel="manifest" href="manifest.json">
-  <meta name="theme-color" content="#0a74da">
-  <script type="module" src="app.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 <body>
   <!-- LOGIN -->
@@ -16,52 +12,29 @@
     <input type="password" id="password" placeholder="Password">
     <button onclick="login()">Login</button>
   </div>
-<script>
-  function login() {
-    const user = document.getElementById("username").value;
-    const pass = document.getElementById("password").value;
 
-    if (user === "admin" && pass === "admin") {
-      document.getElementById("loginPage").style.display = "none";
-      document.getElementById("formPage").style.display = "block";
-    } else {
-      alert("Username atau Password salah!");
-    }
-  }
-</script>
   <!-- FORM -->
   <div id="formPage" style="display:none;">
     <h2>Work Order Form</h2>
     <form id="woForm">
       <input type="text" id="wo_number" placeholder="WO Number" required><br>
       <input type="text" id="customer_name" placeholder="Customer Name" required><br>
-      <input type="text" id="customer_id" placeholder="Customer ID"><br>
-      <textarea id="address" placeholder="Alamat"></textarea><br>
-      <input type="text" id="phone" placeholder="Phone"><br>
-      <input type="email" id="email" placeholder="Email"><br>
-      <input type="text" id="ont_serial" placeholder="ONT Serial"><br>
-      <input type="text" id="fat_id" placeholder="FAT ID"><br>
-      <input type="text" id="port_allocation" placeholder="Port Allocation"><br>
-      <input type="text" id="signal_level" placeholder="Signal Level"><br>
-
-      <label>Foto Rumah</label><input type="file" id="photo_house"><br>
-      <label>Selfie</label><input type="file" id="photo_selfie"><br>
-      <label>Foto Kabel 1</label><input type="file" id="photo_cable1"><br>
-      <label>Foto Kabel 2</label><input type="file" id="photo_cable2"><br>
-      <label>Barcode</label><input type="file" id="photo_barcode"><br>
-      <label>Tanda Tangan Customer</label><input type="file" id="signature_customer"><br>
-      <label>Tanda Tangan Teknisi</label><input type="file" id="signature_installer"><br>
-
       <button type="submit">Kirim</button>
     </form>
   </div>
 
-  <!-- Service Worker -->
+  <!-- Script login langsung di sini -->
   <script>
-    if ("serviceWorker" in navigator) {
-      navigator.serviceWorker.register("sw.js").then(() => {
-        console.log("Service Worker registered");
-      });
+    function login() {
+      const user = document.getElementById("username").value;
+      const pass = document.getElementById("password").value;
+
+      if (user === "admin" && pass === "admin") {
+        document.getElementById("loginPage").style.display = "none";
+        document.getElementById("formPage").style.display = "block";
+      } else {
+        alert("Username / Password salah!");
+      }
     }
   </script>
 </body>
