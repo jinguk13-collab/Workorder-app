@@ -10,8 +10,7 @@
     <h2>Login</h2>
     <input type="text" id="username" placeholder="Username">
     <input type="password" id="password" placeholder="Password">
-    <!-- type="button" biar gak reload -->
-    <button type="button" onclick="login()">Login</button>
+    <button id="loginBtn">Login</button>
   </div>
 
   <!-- FORM -->
@@ -29,8 +28,9 @@
   </div>
 
   <script>
-    // Fungsi login
-    function login() {
+    // Login handler
+    document.getElementById("loginBtn").addEventListener("click", function(e) {
+      e.preventDefault(); // cegah reload
       const user = document.getElementById("username").value;
       const pass = document.getElementById("password").value;
 
@@ -40,11 +40,11 @@
       } else {
         alert("Username / Password salah!");
       }
-    }
+    });
 
-    // Fungsi submit form
+    // Form handler
     document.getElementById("woForm").addEventListener("submit", function(e) {
-      e.preventDefault();
+      e.preventDefault(); // cegah reload
       alert("Form berhasil dikirim! (dummy)");
       this.reset();
     });
