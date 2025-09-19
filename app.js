@@ -11,7 +11,7 @@ const db = getFirestore(app);
 // const storage = getStorage(app);
 
 // URL Web App dari Google Apps Script Anda
-const GOOGLE_APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxWw-Jz_A6rF6h5rJ2z1D9gKqN2y-L8f9X4zL5e9k7/exec"; // GANTI DENGAN URL WEB APP ANDA
+const GOOGLE_APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyEjLmA2JARxEUeynqe3Is2EAlvyaNZGumlh0vZiOpN/dev"; // GANTI DENGAN URL WEB APP ANDA
 
 // HAPUS fungsi uploadFile ke Storage:
 // async function uploadFile(file, path) {
